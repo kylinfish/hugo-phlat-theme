@@ -1,19 +1,26 @@
 <div class="row">
-    <div class="col-md-12 content-card">
-        <h1>{{ .Title }}</h1>
-        {{ if eq .Type "post" }}
-            {{ $categoryCount := .Params.categories | len }}
-            <ul class="list-inline meta">
-                <li><i class="fa fa-calendar"></i>{{ .Date.Format "January 2, 2006" }}</li>
-                <li><i class="fa fa-user"></i>{{ .Params.author }}</li>
-                {{ if isset .Params "categories" }}
-                    {{ $categoryCount := .Params.categories | len }}
-                    <li><i class="fa fa-folder"></i>{{ range $index, $value := .Params.categories }}<a href="{{ "/categories/" | absURL }}{{ . | urlize }}">{{ $value }}</a>{{ if lt (add $index 1) $categoryCount }}, {{ end }}{{ end }}</li>
-                {{ end }}
-            </ul>
+    <h1>{{ .Title }}</h1>
+    {{ if eq .Type "post" }}
+    {{ $categoryCount := .Params.categories | len }}
+    <br>
+    {{ if isset .Params "relative_banner" }}
+    <img class="img-responsive" src="/img/{{ .Params.relative_banner }}" width="100%">
+    {{ else if isset .Params "absolute_banner" }}
+    <img class="img-responsive" src="{{ .Params.absolute_banner }}" width="100%">
+    {{ end }}
+    <ul class="list-inline meta">
+        <li><i class="fa fa-calendar text-info"></i> <span class="text-info">{{ .Date.Format "January 2, 2006" }}</span></li>
+        {{ if isset .Params "categories" }}
+        {{ $categoryCount := .Params.categories | len }}
+        <li><i class="fa fa-folder text-info"></i> {{ range $index, $value := .Params.categories }}<a href="{{ "/categories/" | absURL }}{{ . | urlize }}">{{ $value }}</a>{{ if lt (add $index 1) $categoryCount }}, {{ end }}{{ end }}</li>
         {{ end }}
-        {{ partial "widgets/content/share.html" . }}
-        {{ .Content }}
-        {{ partial "widgets/content/tags.html" . }}
-    </div>
+    </ul>
+    {{ end }}
+
+    {{ .Content }}
+
+    {{ partial "widgets/content/tags.html" . }}
+    <div class="spacing"></div>
+    <h6>SHARE:</h6>
+    {{ partial "widgets/content/share.html" . }}
 </div>

@@ -2,13 +2,15 @@
     {{ if eq $key "categories" }}
         <div class="row">
             <div class="col-md-11 col-md-offset-1 card">
-                <h5>{{ $key | pluralize }}</h5>
+                <h4>Categories</h4>
+                <div class="hline"></div>
                 <ul class="list-unstyled posts-recent">
                     {{ range first 5 $value.ByCount }}
-                        <li><a href="{{ $.Site.BaseURL}}{{ $key | pluralize }}/{{ .Name | urlize }}">{{ .Name }}</a></li>
+                    <p><a href="{{ $.Site.BaseURL}}{{ $key | pluralize }}/{{ .Name | urlize }}"><i class="fa fa-angle-right"></i> {{ .Name }}<span class="badge badge-theme pull-right">{{ .Count }}</span></a></p>
                     {{ end }}
                 </ul>
             </div>
         </div>
+        <div class="spacing"></div>
     {{ end }}
 {{ end }}

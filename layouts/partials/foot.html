@@ -3,19 +3,15 @@
         <i class="glyphicon glyphicon-chevron-up"></i> Back to Top
     </a>
 </div>
-<script src="{{ .Site.BaseURL }}js/jquery-2.2.1.min.js"></script>
-<script src="{{ .Site.BaseURL }}js/bootstrap.min.js"></script>
-<script src="{{ .Site.BaseURL }}js/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<script>
-    if(($(window).height() + 100) < $(document).height()) {
-        $('#back-to-top').removeClass('hidden').affix({
-            offset: {
-                top: 100
-            }
-        });
-    }
-</script>
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script async src="{{ .Site.BaseURL }}js/bootstrap.min.js"></script>
+<script async src="{{ .Site.BaseURL }}js/retina-1.1.0.js"></script>
+<script async src="{{ .Site.BaseURL }}js/jquery.hoverdir.js"></script>
+<script async src="{{ .Site.BaseURL }}js/jquery.hoverex.min.js"></script>
+<script async src="{{ .Site.BaseURL }}js/jquery.prettyPhoto.js"></script>
+<script async src="{{ .Site.BaseURL }}js/jquery.isotope.min.js"></script>
+<script async src="{{ .Site.BaseURL }}js/custom.js"></script>
+
 {{ if not (in (printf "%#v" .Site.BaseURL) "localhost") }}
     {{ with .Site.Params.google_adsense }}
         <script>

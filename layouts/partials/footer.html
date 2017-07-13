@@ -1,15 +1,20 @@
-<footer class="footer">
-    <div class="container">
+<div id="footerwrap">
+    <footer class="container">
         <div class="row">
-            {{ partial "widgets/footer/links.html" . }}
-            {{ partial "widgets/footer/social.html" . }}
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <p>
-                    <a href="https://github.com/nraboy/hugo-phlat-theme">Phlat Theme</a> designed and built by <a href="http://www.nraboy.com">Nic Raboy</a> in San Francisco, California.
-                </p>
+            <div class="col-lg-4">
+                <h4>About</h4>
+                <div class="hline-w"></div>
+                <p>{{ .Site.Title }}   @
+                {{ .Site.Params.author }}</p>
+                <p>{{ .Site.Params.footer_description }}</p>
+            </div>
+            <div class="col-lg-4">
+                {{ partial "widgets/footer/social.html" . }}
+            </div>
+            <div class="col-lg-4">
+                {{ partial "widgets/footer/links.html" . }}
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+</div>
+

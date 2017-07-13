@@ -1,10 +1,17 @@
 <div class="row">
     <div class="col-md-11 col-md-offset-1 card">
-        <h5>Recent Posts</h5>
-        <ul class="list-unstyled posts-recent">
+        <h4>Recent Posts</h4>
+        <div class="hline"></div>
+            <ul class="popular-posts">
             {{ range first 5 (where .Site.Pages "Type" "post") }}
-                <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            <li>
+                <a href="#"><img src="https://images.weserv.nl/?url={{ if .Params.banner }}{{ .Params.banner }}{{ end }}&w=70&h=70&t=square" alt="Popular Post"></a>
+
+                <p><a href="{{ .Permalink }}">❖ {{ .Title }}</a></p>
+                <em>Posted on {{ .Date.Format "January 2, 2006" }}</em>
+            </li>
             {{ end }}
         </ul>
     </div>
 </div>
+<div class="spacing"></div>
