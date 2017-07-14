@@ -2,7 +2,7 @@
     <h6>Recent</h6>
     <div class="tab-content">
         <div class="tab-pane  fade  in  active" id="recent-posts">
-            {{ range first 5 (where .Site.Pages "Type" "post") }}
+            {{ range first 4 (where .Site.Pages "Type" "post") }}
             <div class="push-down-15">
                 {{ if isset .Params "relative_banner" }}
                 <img src="/img/{{ .Params.relative_banner }}">
