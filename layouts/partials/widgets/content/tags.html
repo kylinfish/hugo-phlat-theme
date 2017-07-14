@@ -1,7 +1,9 @@
 {{ if eq .Type "post" }}
-    <div class="list-inline tags" style="margin-top: 20px; margin-left: 0px">
-        {{ range .Params.tags }}
-        <a class="label label-info" href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
-        {{ end }}
-    </div>
+<div class="tags  widget-tags">
+    <h6>Tags</h6>
+    <hr>
+    {{ range .Params.tags }}
+    <a class="tags__link" href="{{ "/tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+    {{ end }}
+</div>
 {{ end }}

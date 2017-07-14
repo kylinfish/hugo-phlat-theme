@@ -1,16 +1,15 @@
 {{ range $key, $value := .Site.Taxonomies }}
-    {{ if eq $key "tags" }}
-<div class="row">
-    <div class="col-md-11 col-md-offset-1 card">
-        <h4>Popular Tags</h4>
-        <div class="hline"></div>
-        <p>
-            {{ range first 10 $value.ByCount }}
-            <a class="btn btn-theme" href="{{ $.Site.BaseURL}}{{ $key | pluralize }}/{{ .Name | urlize }}" role="button">{{ .Name }}</a>
-            {{ end }}
-        </p>
-    </div>
+{{ if eq $key "tags" }}
+<div class="tags  widget-tags">
+    <h6>Popular Tags</h6>
+    <hr>
+    <p>
+        {{ range first 10 $value.ByCount }}
+        <a class="tags__link" href="{{ $.Site.BaseURL}}{{ $key | pluralize }}/{{ .Name | urlize }}" role="button">{{ .Name }}</a>
+        {{ end }}
+    </p>
+</div>
 </div>
 <div class="spacing"></div>
-    {{ end }}
+{{ end }}
 {{ end }}

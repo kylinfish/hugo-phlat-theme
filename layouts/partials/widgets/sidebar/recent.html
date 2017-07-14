@@ -1,17 +1,44 @@
-<div class="row">
-    <div class="col-md-11 col-md-offset-1 card">
-        <h4>Recent Posts</h4>
-        <div class="hline"></div>
-            <ul class="popular-posts">
-            {{ range first 5 (where .Site.Pages "Type" "post") }}
-            <li>
-                <a href="#"><img src="https://images.weserv.nl/?url={{ if .Params.banner }}{{ .Params.banner }}{{ end }}&w=70&h=70&t=square" alt="Popular Post"></a>
+<div class="widget-posts  push-down-30">
+    <h6>Popular / Recent</h6>
+    <ul class="nav  nav-tabs">
+        <li class="active">
+            <a href="#recent-posts" data-toggle="tab"> <span class="glyphicon  glyphicon-time"></span> &nbsp;Recent Posts </a>
+        </li>
+        <li>
+            <a href="#popular-posts" data-toggle="tab"> <span class="glyphicon  glyphicon-flash"></span> &nbsp;Popular Posts </a>
+        </li>
+    </ul>
 
-                <p><a href="{{ .Permalink }}">❖ {{ .Title }}</a></p>
-                <em>Posted on {{ .Date.Format "January 2, 2006" }}</em>
-            </li>
+    <div class="tab-content">
+        <div class="tab-pane  fade  in  active" id="recent-posts">
+            {{ range first 3 (where .Site.Pages "Type" "post") }}
+            <div class="push-down-15">
+                    {{ if isset .Params "relative_banner" }}
+                    <img src="/img/{{ .Params.relative_banner }}">
+                    {{ else if isset .Params "absolute_banner" }}
+                    <img src="{{ .Params.absolute_banner }}">
+                    {{ end }}
+                <h5>
+                    <a href="{{ .Permalink }}">❖ {{ .Title }}</a>
+                </h5>
+                <span class="widget-posts__time"> {{ .Date.Format "January 2, 2006" }}</span>
+            </div>
             {{ end }}
-        </ul>
+        </div>
+        <div class="tab-pane  fade" id="popular-posts">
+            {{ range first 3 (where .Site.Pages "Type" "post") }}
+            <div class="push-down-15">
+                    {{ if isset .Params "relative_banner" }}
+                    <img src="/img/{{ .Params.relative_banner }}">
+                    {{ else if isset .Params "absolute_banner" }}
+                    <img src="{{ .Params.absolute_banner }}">
+                    {{ end }}
+                <h5>
+                    <a href="{{ .Permalink }}">❖ {{ .Title }}</a>
+                </h5>
+                <span class="widget-posts__time"> {{ .Date.Format "January 2, 2006" }}</span>
+            </div>
+            {{ end }}
+        </div>
     </div>
 </div>
-<div class="spacing"></div>

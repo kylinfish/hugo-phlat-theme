@@ -14,17 +14,15 @@
     {{ end }}
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
     <meta name="keywords" content='{{ with .Params.tags }}{{ delimit . "," }}{{ else }}{{ delimit .Site.Params.keywords "," }}{{ end }}' />
-    {{ with .Params.author }}
+    {{ with .Site.Params.author }}
         <meta name="author" content="{{ . }}" />
     {{ end }}
     {{ with .Site.Params.favicon }}
         <link rel="icon" type="image/png" href="{{ . }}" sizes="196x196" />
     {{ end }}
     <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/bootstrap.css" />
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/bootstrap-social.css" />
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome.min.css" />
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css" />
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/theme.css" />
+    <style>.meta .wp-post-image {max-height: 450px; object-fit: cover;}.sidebar img {height:70px; width:70px; object-fit: cover;}</style>
 
     {{ if not (in (printf "%#v" .Site.BaseURL) "localhost") }}
         {{ with .Site.Params.google_adsense }}

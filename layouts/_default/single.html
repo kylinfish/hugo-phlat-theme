@@ -3,26 +3,78 @@
     {{ partial "head.html" . }}
     <body>
         {{ partial "navigation/navigation.html" . }}
-        <div id="blue">
-            <div class="container">
-                <div class="row">
-                    <h3>{{ .Title }}</h3>
-                </div>
-            </div>
-        </div>
 
-        <div class="container mtb">
-            <div class="col-md-8">
-                {{ .Render "single.content" }}
-                <div class="spacing"></div>
-                {{ partial "disqus.html" . }}
-            </div>
-            <div class="col-md-4">
-                {{ partial "widgets/sidebar/search.html" . }}
-                {{ partial "widgets/sidebar/recent.html" . }}
-                {{ partial "widgets/sidebar/adsense.html" . }}
-                {{ partial "widgets/sidebar/categories.html" . }}
-                {{ partial "widgets/sidebar/tags.html" . }}
+        <div class="container">
+            <div class="boxed push-down-60">
+                <div class="meta">
+                    {{ if isset .Params "relative_banner" }}
+                    <img class="wp-post-image" src="/img/{{ .Params.relative_banner }}" width="100%">
+                    {{ else if isset .Params "absolute_banner" }}
+                    <img class="wp-post-image" src="{{ .Params.absolute_banner }}" width="100%">
+                    {{ end }}
+                    <div class="meta__container">
+                        <div class="col-xs-4 pull-right">
+                            <div class="row">
+                                <div class="meta__comments">
+                                    <span class="meta__date"><span class="glyphicon glyphicon-calendar"></span> &nbsp; 6. May, 2014</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-10  col-xs-offset-1  col-md-10  col-md-offset-1  push-down-60">
+                        {{ .Render "single.content" }}
+                        <div class="row">
+                            <div class="col-xs-12  col-sm-6">
+
+                                <div class="post-comments">
+                                    <a class="btn  btn-primary" href="single-post-full-width.html#disqus_thread">comment</a>
+                                </div>
+
+                            </div>
+                            <div class="col-xs-12  col-sm-6">
+
+                                <div class="social-icons">
+                                    <a href="#" class="social-icons__container"> <span class="zocial-facebook"></span> </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12  col-sm-6">
+
+                                <div class="post-author">
+                                    <h6>Written By</h6>
+                                    <hr>
+                                    <img src="images/dummy/about-5.jpg" alt="Post author">
+                                    <h5>
+                                        <a href="#">Danielle Thatcher</a>
+                                    </h5>
+                                    <span class="post-author__text">Interface Designer, Poker Player and Imaginary Breakdancer</span>
+                                </div>
+
+                            </div>
+                            <div class="col-xs-12  col-sm-6">
+                                <div class="tags">
+                                    <h6>Tags</h6>
+                                    <hr>
+                                    <a href="#" class="tags__link">Tech</a>
+                                    <a href="#" class="tags__link">Web Design</a>
+                                    <a href="#" class="tags__link">HTML/CSS</a>
+                                    <a href="#" class="tags__link">Tutorials</a>
+                                    <a href="#" class="tags__link">Workflow</a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="disqus-comments  push-down-45">
+                            <div id="disqus_thread"></div>
+                            {{ partial "disqus.html" . }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         {{ partial "footer.html" . }}

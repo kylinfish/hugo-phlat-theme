@@ -1,16 +1,14 @@
 {{ range $key, $value := .Site.Taxonomies }}
-    {{ if eq $key "categories" }}
-        <div class="row">
-            <div class="col-md-11 col-md-offset-1 card">
-                <h4>Categories</h4>
-                <div class="hline"></div>
-                <ul class="list-unstyled posts-recent">
-                    {{ range first 5 $value.ByCount }}
-                    <p><a href="{{ $.Site.BaseURL}}{{ $key | pluralize }}/{{ .Name | urlize }}"><i class="fa fa-angle-right"></i> {{ .Name }}<span class="badge badge-theme pull-right">{{ .Count }}</span></a></p>
-                    {{ end }}
-                </ul>
-            </div>
-        </div>
-        <div class="spacing"></div>
-    {{ end }}
+{{ if eq $key "categories" }}
+<div class="widget-categories  push-down-30">
+    <h6>Categories</h6>
+    <ul>
+        {{ range first 5 $value.ByCount }}
+        <li>
+            <a href="{{ $.Site.BaseURL}}{{ $key | pluralize }}/{{ .Name | urlize }}">{{ .Name }} &nbsp; <span class="widget-categories__text">({{ .Count }})</span> </a>
+        </li>
+        {{ end }}
+    </ul>
 {{ end }}
+{{ end }}
+</div>

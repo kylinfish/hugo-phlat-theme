@@ -3,47 +3,71 @@
     {{ partial "head.html" . }}
     <body>
         {{ partial "navigation/navigation.html" . }}
-        <div id="blue">
-            <div class="container">
-                <div class="row">
-                    <h3>{{ .Params.Description }}</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="container mtb">
+        <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-xs-12  col-md-8">
                     {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
                     {{ range $paginator.Pages }}
-                        <div class="row">
-                            <div class="col-md-12 content-card">
-                                {{ if isset .Params "relative_banner" }}
-                                <img class="img-responsive" src="/img/{{ .Params.relative_banner }}" width="100%">
-                                {{ else if isset .Params "absolute_banner" }}
-                                <img class="img-responsive" src="{{ .Params.absolute_banner }}" width="100%">
-                                {{ end }}
-                                <a href="{{ .Permalink }}"><h2 class="ctitle">{{ .Title }}</h2></a>
-                                <p><i class="fa fa-calendar"></i> <csmall>{{ .Date.Format "January 2, 2006" }}</csmall></p>
-                                {{ .Summary }}
-                                <a class="btn btn-link pull-right" href="{{ .Permalink }}">[Read More]</a>
+                    <div class="boxed  sticky  push-down-45">
+                        <div class="meta">
+                            {{ if isset .Params "relative_banner" }}
+                            <img class="wp-post-image" src="/img/{{ .Params.relative_banner }}" width="100%">
+                            {{ else if isset .Params "absolute_banner" }}
+                            <img class="wp-post-image" src="{{ .Params.absolute_banner }}" width="100%">
+                            {{ end }}
+                            <div class="meta__container">
+                                <div class="row pull-right">
+                                    <div class="col-xs-12">
+                                        <span class="meta__date"><span class="glyphicon glyphicon-calendar"></span> &nbsp; {{ .Date.Format "Jaunary 2, 2006" }}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="hline"></div>
-                        <div class="spacing"></div>
+
+                        <div class="sticky__box">
+                            <span class="sticky__circle"></span>
+                            <span class="sticky__circle"></span>
+                            <span class="sticky__circle"></span>
+                            <span class="sticky__circle"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-10  col-xs-offset-1">
+
+                                <div class="post-content--front-page">
+                                    <h2 class="front-page-title"> <a href="{{ .Permalink }}">{{ .Title }}</a> </h2>
+                                    {{ .Summary }}
+                                </div>
+
+                                <a href="{{ .Permalink }}">
+                                    <div class="read-more">
+                                        Continue reading
+                                        <div class="read-more__arrow">
+                                            <span class="glyphicon  glyphicon-chevron-right"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     {{ end }}
                     {{ partial "pagination.html" . }}
                 </div>
-                <div class="col-md-4">
-                    {{ partial "widgets/sidebar/search.html" . }}
-                    {{ partial "widgets/sidebar/recent.html" . }}
-                    {{ partial "widgets/sidebar/adsense.html" . }}
-                    {{ partial "widgets/sidebar/categories.html" . }}
-                    {{ partial "widgets/sidebar/tags.html" . }}
+                <div class="col-xs-12  col-md-4">
+                    {{ partial "widgets/sidebar/author.html" . }}
+                    <div class="sidebar  boxed  push-down-30">
+                        <div class="row">
+                            <div class="col-xs-10  col-xs-offset-1">
+                                {{ partial "widgets/sidebar/categories.html" . }}
+                                {{ partial "widgets/sidebar/recent.html" . }}
+                                {{ partial "widgets/sidebar/tags.html" . }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            {{ partial "footer.html" . }}
         </div>
-        {{ partial "footer.html" . }}
         {{ partial "foot.html" . }}
     </body>
 </html>
