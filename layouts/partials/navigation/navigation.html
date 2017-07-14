@@ -1,7 +1,7 @@
 <header class="header push-down-45">
     <div class="container">
         <div class="logo pull-left">
-            <a href="/"><img src="http://html-demo.proteusthemes.com/readable/images/logo.png" > {{ .Site.Params.Author }} </a>
+            <a href="/"><img src="/img/logo.png">{{ .Site.Title }}</a>
         </div>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#readable-navbar-collapse">
@@ -13,15 +13,15 @@
         </div>
         <nav class="navbar  navbar-default" role="navigation">
 
-          <div class="collapse  navbar-collapse" id="readable-navbar-collapse">
-            <ul class="navigation">
-                {{ range .Site.Menus.header }}
+            <div class="collapse  navbar-collapse" id="readable-navbar-collapse">
+                <ul class="navigation">
+                    {{ range .Site.Menus.header }}
                     <li>
                         <a href="{{ .URL }}"> {{ .Name }} </a>
-                  </li>
-                {{ end }}
-            </ul>
-          </div>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
         </nav>
     </div>
 </header>

@@ -8,15 +8,15 @@
                 <div class="col-md-12">
                     {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
                     {{ range $paginator.Pages }}
-                        <div class="row boxed">
-                            <div class="col-md-12 content-card">
-                                <a href="{{ .Permalink }}"><h2 class="ctitle">{{ .Title }}</h2></a>
-                                <h5 class="text-success"><i class="fa fa-calendar"></i> <csmall>{{ .Date.Format "January 2, 2006" }}</csmall></h5>
-                                {{ .Summary }}
-                                <a style="margin-top:-50px" class="btn btn-primary  btn-primary--transparent pull-right" href="{{ .Permalink }}">Read More</a>
-                            </div>
+                    <div class="row boxed">
+                        <div class="col-md-12 content-card">
+                            <a href="{{ .Permalink }}"><h2 class="ctitle">{{ .Title }}</h2></a>
+                            <h5 class="text-success"><i class="fa fa-calendar"></i> <csmall>{{ .Date.Format "January 2, 2006" }}</csmall></h5>
+                            {{ .Summary }}
+                            <a style="margin-top:-50px" class="btn btn-primary  btn-primary--transparent pull-right" href="{{ .Permalink }}">Read More</a>
                         </div>
-                        <br>
+                    </div>
+                    <br>
                     {{ end }}
                     {{ partial "pagination.html" . }}
                 </div>
