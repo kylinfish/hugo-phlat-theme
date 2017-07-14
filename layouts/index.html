@@ -16,9 +16,11 @@
                             <img class="wp-post-image" src="{{ .Params.absolute_banner }}" width="100%">
                             {{ end }}
                             <div class="meta__container">
-                                <div class="row pull-right">
+                                <div class="row">
                                     <div class="col-xs-12">
-                                        <span class="meta__date"><span class="glyphicon glyphicon-calendar"></span> &nbsp; {{ .Date.Format "Jaunary 2, 2006" }}</span>
+                                        <div class="meta__info pull-right">
+                                            <span class="meta__date"><span class="glyphicon glyphicon-calendar"></span> &nbsp; {{ .Date.Format "Jaunary 2, 2006" }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
