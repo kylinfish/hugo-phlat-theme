@@ -48,11 +48,11 @@
                                 <div class="post-author">
                                     <h6>Written By</h6>
                                     <hr>
-                                    <img src="images/dummy/about-5.jpg" alt="Post author">
+                                    <img src="/img/avatar.jpg" alt="Post author" width="90" height="90">
                                     <h5>
-                                        <a href="#">Danielle Thatcher</a>
+                                        <a href="#">{{ with .Site.Params.author }}{{ . }}{{ end }}</a>
                                     </h5>
-                                    <span class="post-author__text">Interface Designer, Poker Player and Imaginary Breakdancer</span>
+                                    <span class="post-author__text">Backend Programmer</span>
                                 </div>
 
                             </div>
